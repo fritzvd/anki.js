@@ -43,13 +43,19 @@ Anki.prototype.getNotesFromDeck = function (key) {
 }
 
 Anki.prototype.getCardsFromDeck = function (key) {
-  var q = this.db
-    .exec(`SELECT * from cards where did = ${key}`
-    )[0].values
-    .map(function (item) {
-      return item
+  var q = this.db.exec(
+    `SELECT * from cards where did = ${key}`
+  )
+  var result = q[0].values
+    .map(function (item, i) {
+      var thing = {}
+      item.map(function (inner, j) {
+        thing[q[0].columns[j]] = inner
+      })
+      
+      return thing
     })
-  return q
+  return result
 }
 
 module.exports = Anki
