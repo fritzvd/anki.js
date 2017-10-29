@@ -1,5 +1,5 @@
 {
-  "name": "anki.js",
+  "name": "anki",
   "version": "1.0.0",
   "description": "handle anki .apkg fils",
   "main": "index.js",
