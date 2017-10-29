@@ -2,6 +2,11 @@ var zip = require('zip')
 var sql = require('sql.js')
 var Anki = require('./anki')
 
+/**
+ * 
+ * @param {Buffer} ankiFile expects a loaded anki `.apkg` file
+ * @return returns an `Anki` object
+ */
 function ankiRead (ankiFile) {
   if (!ankiFile) {
     err('File is empty or invalid')
