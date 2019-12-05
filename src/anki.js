@@ -7,7 +7,7 @@ Anki.prototype.getDecks = function () {
     return this.decks
   }
   var q = this.db.exec('SELECT decks from col')
-  var _that = this
+  var getNotesFromDeck = this.getNotesFromDeck.bind(this)
 
   var du = JSON.parse(q[0].values[0][0])
   var keys = Object.keys(du)
@@ -19,7 +19,7 @@ Anki.prototype.getDecks = function () {
         did: key,
         get notes() {
           if (this._notes === undefined) {
-            this._notes = _that.getNotesFromDeck.call(_that, key)
+            this._notes = getNotesFromDeck(key)
           } 
           return this._notes
         },
